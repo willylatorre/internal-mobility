@@ -10,6 +10,9 @@ module.exports = {
     extend: {
       height: {
         nav: '60px'
+      },
+      maxWidth: {
+        input: '220px'
       }
     }
   },

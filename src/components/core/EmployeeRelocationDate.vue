@@ -3,15 +3,15 @@ import { defineComponent } from '@vue/composition-api'
 import { useEmployeeForm } from '@/components/core/useEmployeeForm'
 import TitleHintStep from '@/components/common/TitleHintStep'
 export default defineComponent({
-  name: 'EmployeeNumberInput',
+  name: 'EmployeeRelocationDate',
   components: {
     TitleHintStep
   },
   setup() {
-    const { employeeId } = useEmployeeForm()
+    const { date } = useEmployeeForm()
 
     return {
-      employeeId
+      date
     }
   }
 })
@@ -20,18 +20,13 @@ export default defineComponent({
 <template>
   <title-hint-step>
     <template #title>
-      1. Employee's number
+      2. Relocation's date
     </template>
 
     <template #hint>
-      Please, provide your unique employee number to which the request will be
-      assigned.
+      Select the desired relocation date.
     </template>
 
-    <el-input
-      class="max-w-input"
-      v-model.number="employeeId"
-      placeholder="Your employee number"
-    />
+    <el-date-picker v-model="date" type="date" placeholder="Pick a date" />
   </title-hint-step>
 </template>

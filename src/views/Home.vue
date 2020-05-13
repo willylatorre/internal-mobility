@@ -1,12 +1,14 @@
 <script>
 import { defineComponent } from '@vue/composition-api'
 import EmployeeNumberInput from '@/components/core/EmployeeNumberInput'
+import EmployeeRelocationDate from '@/components/core/EmployeeRelocationDate'
 
 export default defineComponent({
   name: 'Home',
   setup() {},
   components: {
-    EmployeeNumberInput
+    EmployeeNumberInput,
+    EmployeeRelocationDate
   }
 })
 </script>
@@ -37,6 +39,7 @@ export default defineComponent({
 
       <div class="my-6">
         <EmployeeNumberInput />
+        <EmployeeRelocationDate />
       </div>
     </div>
   </div>
