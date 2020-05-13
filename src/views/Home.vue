@@ -1,18 +1,43 @@
+<script>
+import { defineComponent } from '@vue/composition-api'
+import EmployeeNumberInput from '@/components/core/EmployeeNumberInput'
+
+export default defineComponent({
+  name: 'Home',
+  setup() {},
+  components: {
+    EmployeeNumberInput
+  }
+})
+</script>
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="home grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class="flex justify-center">
+      <img
+        class="rounded"
+        src="@/assets/img/move.jpg"
+        alt="moving"
+        loading="lazy"
+        width="400"
+      />
+    </div>
+
+    <div>
+      <h1 class="font-medium text-xl mb-2">
+        Welcome to <span class="highlight">neyda</span>'s Internal Mobility
+        Program (IMP)
+      </h1>
+
+      <p>
+        You have requested recently a temporary relocation to one of our other
+        offices. Please do follow the instructions and if you have any doubs, do
+        not hesitate to contact your manager.
+      </p>
+
+      <div class="my-6">
+        <EmployeeNumberInput />
+      </div>
+    </div>
   </div>
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
-export default {
-  name: "Home",
-  components: {
-    HelloWorld
-  }
-};
-</script>
