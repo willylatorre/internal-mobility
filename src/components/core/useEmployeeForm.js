@@ -2,10 +2,10 @@ import { ref, provide, inject } from '@vue/composition-api'
 
 const symb = Symbol.for('neyda.form')
 
-const createFormInstance = _currentOffice => {
+const createFormInstance = () => {
   const employeeId = ref(null)
   const date = ref(new Date())
-  const currentOffice = ref(_currentOffice)
+  const currentOffice = ref(null)
   const destinationOffice = ref(null)
 
   return {
@@ -16,8 +16,8 @@ const createFormInstance = _currentOffice => {
   }
 }
 
-export function provideEmployeeForm(currentOffice) {
-  const instance = createFormInstance(currentOffice)
+export function provideEmployeeForm() {
+  const instance = createFormInstance()
   return provide(symb, instance)
 }
 

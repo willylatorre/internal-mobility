@@ -2,13 +2,15 @@
 import { defineComponent } from '@vue/composition-api'
 import EmployeeNumberInput from '@/components/core/EmployeeNumberInput'
 import EmployeeRelocationDate from '@/components/core/EmployeeRelocationDate'
+import EmployeeCurrentLocationSelect from '@/components/core/EmployeeCurrentLocationSelect'
 
 export default defineComponent({
   name: 'Home',
   setup() {},
   components: {
     EmployeeNumberInput,
-    EmployeeRelocationDate
+    EmployeeRelocationDate,
+    EmployeeCurrentLocationSelect
   }
 })
 </script>
@@ -16,12 +18,11 @@ export default defineComponent({
 <template>
   <div class="home grid grid-cols-1 lg:grid-cols-2 gap-4">
     <div class="flex justify-center">
+
       <img
-        class="rounded"
+        class="rounded max-w-image"
         src="@/assets/img/move.jpg"
         alt="moving"
-        loading="lazy"
-        width="400"
       />
     </div>
 
@@ -40,6 +41,7 @@ export default defineComponent({
       <div class="my-6">
         <EmployeeNumberInput />
         <EmployeeRelocationDate />
+        <EmployeeCurrentLocationSelect />
       </div>
     </div>
   </div>

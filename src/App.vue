@@ -3,8 +3,7 @@ import { defineComponent } from '@vue/composition-api'
 import { provideEmployeeForm } from '@/components/core/useEmployeeForm'
 export default defineComponent({
   setup() {
-    // Let's suppose by default the employee is located in London's office
-    provideEmployeeForm('london')
+    provideEmployeeForm()
   }
 })
 </script>
