@@ -5,14 +5,10 @@ const symb = Symbol.for('neyda.form')
 const createFormInstance = () => {
   const employeeId = ref(null)
   const date = ref(new Date())
-  const currentOffice = ref(null)
-  const destinationOffice = ref(null)
 
   return {
     employeeId,
-    date,
-    currentOffice,
-    destinationOffice
+    date
   }
 }
 

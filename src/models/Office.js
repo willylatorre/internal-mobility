@@ -7,7 +7,7 @@ export default class Office {
     address,
     employees,
     meetingRooms,
-    tags
+    teams
   }) {
     this.id = id
     this.address = address
@@ -16,7 +16,7 @@ export default class Office {
     this.flightCode = flightCode
     this.employees = employees
     this.meetingRooms = meetingRooms
-    this.tags = tags
+    this.teams = teams
   }
 
   setWeatherInfo(weatherInfo) {

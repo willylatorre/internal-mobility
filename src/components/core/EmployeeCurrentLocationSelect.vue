@@ -1,8 +1,7 @@
 <script>
-import { defineComponent } from '@vue/composition-api'
-import { useEmployeeForm } from '@/components/core/useEmployeeForm'
+import { defineComponent, computed } from '@vue/composition-api'
+import { useOffices } from '@/components/offices/useOffices'
 import TitleHintStep from '@/components/common/TitleHintStep'
-import Office from '@/models/Office'
 
 export default defineComponent({
   name: 'EmployeeCurrentLocationSelect',
@@ -10,19 +9,15 @@ export default defineComponent({
     TitleHintStep
   },
   setup() {
-    const { currentOffice } = useEmployeeForm()
 
-    // TODO retrieve from api
-    const availableLocations = [
-      new Office({ id: 1, city: 'London' }),
-      new Office({ id: 2, city: 'Amsterdam' }),
-      new Office({ id: 3, city: 'Madrid' })
-    ]
+    const { currentOffice, offices } = useOffices()
 
-    const locationOptions = availableLocations.map(loc => ({
-      label: loc.city,
-      value: loc
-    }))
+    const locationOptions = computed(() =>
+      offices.value.map(loc => ({
+        label: loc.city,
+        value: loc
+      }))
+    )
 
     return {
       currentOffice,

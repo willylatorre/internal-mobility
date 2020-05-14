@@ -11,8 +11,13 @@ module.exports = {
       height: {
         nav: '60px'
       },
+      maxHeight: {
+        image: '400px',
+        imageSmall: '200px'
+      },
       maxWidth: {
-        input: '220px'
+        input: '220px',
+        image: '400px'
       }
     }
   },

@@ -1,12 +1,31 @@
 <script>
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, computed } from '@vue/composition-api'
 import EmployeeNumberInput from '@/components/core/EmployeeNumberInput'
 import EmployeeRelocationDate from '@/components/core/EmployeeRelocationDate'
 import EmployeeCurrentLocationSelect from '@/components/core/EmployeeCurrentLocationSelect'
 
+import { useEmployeeForm } from '@/components/core/useEmployeeForm'
+import { useOffices } from '@/components/offices/useOffices'
+
 export default defineComponent({
   name: 'Home',
-  setup() {},
+  setup() {
+    const { retrieveAdditionalData, currentOffice } = useOffices()
+    const { date, employeeId } = useEmployeeForm()
+
+    const allFieldsFilled = computed(
+      () => currentOffice.value && date.value && employeeId.value
+    )
+
+    const nextStep = () => {
+      retrieveAdditionalData(date.value)
+    }
+
+    return {
+      allFieldsFilled,
+      nextStep
+    }
+  },
   components: {
     EmployeeNumberInput,
     EmployeeRelocationDate,
@@ -17,10 +36,9 @@ export default defineComponent({
 
 <template>
   <div class="home grid grid-cols-1 lg:grid-cols-2 gap-4">
-    <div class="flex justify-center">
-
+    <div class="flex justify-center items-start p-4">
       <img
-        class="rounded max-w-image"
+        class="rounded max-w-image max-h-imageSmall lg:max-h-image"
         src="@/assets/img/move.jpg"
         alt="moving"
       />
@@ -44,5 +62,9 @@ export default defineComponent({
         <EmployeeCurrentLocationSelect />
       </div>
     </div>
+
+    <el-button @click="nextStep" :disabled="!allFieldsFilled">
+      nextStep
+    </el-button>
   </div>
 </template>

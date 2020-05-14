@@ -1,9 +1,12 @@
 <script>
 import { defineComponent } from '@vue/composition-api'
 import { provideEmployeeForm } from '@/components/core/useEmployeeForm'
+import { provideOffices } from '@/components/offices/useOffices'
+
 export default defineComponent({
   setup() {
     provideEmployeeForm()
+    provideOffices()
   }
 })
 </script>
