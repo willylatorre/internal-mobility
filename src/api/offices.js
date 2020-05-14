@@ -1,4 +1,4 @@
-import mockOffices from './mockOffices.json'
+import mockOffices from './mockOffices'
 import Office from '../models/Office'
 
 export default class LocationsApi {

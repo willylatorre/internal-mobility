@@ -17,12 +17,13 @@ export default class FlightsApi {
             to: office.code,
             dateFrom: format(date, 'dd/MM/yyyy')
           })
+
           flightInfo = result.data[0] // Let's just get the first one
         } catch (e) {
           console.error(e)
+        } finally {
+          officeInfo[office.id] = flightInfo
         }
-        officeInfo[office.id] = flightInfo
-        return
       })
     )
     return officeInfo
@@ -35,6 +36,7 @@ export default class FlightsApi {
       to,
       one_for_city: 1,
       one_per_date: 1,
+      max_stopovers: 0,
       partner: 'picky',
       v: 3
     }
