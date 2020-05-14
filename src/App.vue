@@ -13,7 +13,7 @@ export default defineComponent({
 
 <template>
   <div id="app">
-    <nav id="nav" class="shadow-sm">
+    <nav id="nav" class="shadow-sm fixed top-0 w-full">
       <fw-wrapper compact>
         <div class="flex justify-between items-center py-3 h-full">
           <span class="font-medium text-darkGrey"
@@ -23,8 +23,8 @@ export default defineComponent({
         </div>
       </fw-wrapper>
     </nav>
-    <main class="overflow-auto">
-      <fw-wrapper>
+    <main class="py-4">
+      <fw-wrapper compact>
         <router-view />
       </fw-wrapper>
     </main>
@@ -36,9 +36,11 @@ $nav-height: 60px;
 
 nav {
   height: $nav-height;
+  z-index: 1;
+  background: white;
 }
 
 main {
-  height: calc(100vh - #{$nav-height});
+  margin-top: $nav-height;
 }
 </style>

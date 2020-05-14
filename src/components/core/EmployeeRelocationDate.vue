@@ -8,10 +8,17 @@ export default defineComponent({
     TitleHintStep
   },
   setup() {
-    const { date } = useEmployeeForm()
+    const { date, earliestDate } = useEmployeeForm()
+
+    const pickerOptions = {
+      disabledDate(time) {
+        return time.getTime() < earliestDate
+      }
+    }
 
     return {
-      date
+      date,
+      pickerOptions
     }
   }
 })
@@ -24,9 +31,15 @@ export default defineComponent({
     </template>
 
     <template #hint>
-      Select the desired relocation date.
+      Select the desired relocation date. Keep in mind that the earliest date
+      should must be 1 week from now at least.
     </template>
 
-    <el-date-picker v-model="date" type="date" placeholder="Pick a date" />
+    <el-date-picker
+      v-model="date"
+      type="date"
+      placeholder="Pick a date"
+      :picker-options="pickerOptions"
+    />
   </title-hint-step>
 </template>

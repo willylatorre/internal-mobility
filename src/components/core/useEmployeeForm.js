@@ -1,13 +1,16 @@
 import { ref, provide, inject } from '@vue/composition-api'
+import addDays from 'date-fns/addDays'
 
 const symb = Symbol.for('neyda.form')
 
 const createFormInstance = () => {
   const employeeId = ref(null)
-  const date = ref(new Date())
+  const earliestDate = addDays(new Date(), 7)
+  const date = ref(earliestDate)
 
   return {
     employeeId,
+    earliestDate,
     date
   }
 }

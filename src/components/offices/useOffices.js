@@ -1,19 +1,20 @@
 import { ref, provide, inject, computed } from '@vue/composition-api'
 import api from '@/api'
+import Office from '@/models/Office'
 
 const symb = Symbol.for('neyda.offices')
 
 const createOfficesInstance = () => {
   const offices = ref([])
   const currentOffice = ref(null)
-  const destinationOffice = ref(null)
+  const destinationOffice = ref(new Office())
 
   const otherOffices = computed(() => {
     if (!currentOffice.value) {
       return offices.value
     }
 
-    return offices.value.filter(office => !office.id !== currentOffice.value.id)
+    return offices.value.filter(office => office.id !== currentOffice.value.id)
   })
 
   const retrieveOffices = async () => {
@@ -39,7 +40,7 @@ const createOfficesInstance = () => {
       })
     ])
 
-    offices.value.forEach(office => {
+    otherOffices.value.forEach(office => {
       office.setWeatherInfo(weatherInfo[office.id])
       office.setFlightsInfo(flightsInfo[office.id])
     })

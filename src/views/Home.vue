@@ -1,15 +1,16 @@
 <script>
-import { defineComponent, computed } from '@vue/composition-api'
+import { defineComponent, computed, ref } from '@vue/composition-api'
 import EmployeeNumberInput from '@/components/core/EmployeeNumberInput'
 import EmployeeRelocationDate from '@/components/core/EmployeeRelocationDate'
 import EmployeeCurrentLocationSelect from '@/components/core/EmployeeCurrentLocationSelect'
+import CTABar from '@/components/common/CTABar'
 
 import { useEmployeeForm } from '@/components/core/useEmployeeForm'
 import { useOffices } from '@/components/offices/useOffices'
 
 export default defineComponent({
   name: 'Home',
-  setup() {
+  setup(props, ctx) {
     const { retrieveAdditionalData, currentOffice } = useOffices()
     const { date, employeeId } = useEmployeeForm()
 
@@ -17,16 +18,23 @@ export default defineComponent({
       () => currentOffice.value && date.value && employeeId.value
     )
 
-    const nextStep = () => {
-      retrieveAdditionalData(date.value)
+    const loading = ref(false)
+
+    const nextStep = async () => {
+      loading.value = true
+      await retrieveAdditionalData(date.value)
+      loading.value = false
+      ctx.root.$router.push('offices')
     }
 
     return {
+      loading,
       allFieldsFilled,
       nextStep
     }
   },
   components: {
+    CTABar,
     EmployeeNumberInput,
     EmployeeRelocationDate,
     EmployeeCurrentLocationSelect
@@ -35,7 +43,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="home grid grid-cols-1 lg:grid-cols-2 gap-4">
+  <div class="home grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
     <div class="flex justify-center items-start p-4">
       <img
         class="rounded max-w-image max-h-imageSmall lg:max-h-image"
@@ -61,10 +69,13 @@ export default defineComponent({
         <EmployeeRelocationDate />
         <EmployeeCurrentLocationSelect />
       </div>
-    </div>
 
-    <el-button @click="nextStep" :disabled="!allFieldsFilled">
-      nextStep
-    </el-button>
+      <CTABar :loading="loading" :disabled="!allFieldsFilled" @next="nextStep">
+        <template #button>
+          Continue to the next step
+          <i class="el-icon-arrow-right el-icon-right ml-2"></i>
+        </template>
+      </CTABar>
+    </div>
   </div>
 </template>

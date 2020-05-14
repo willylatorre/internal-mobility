@@ -3,13 +3,16 @@ module.exports = {
   theme: {
     colors: {
       green: '#0ABF53',
+      white: 'white',
       grey: '#A3AEBF',
       darkGrey: '#5A6E8B',
-      borderGrey: '#DDE6EE'
+      borderGrey: '#DDE6EE',
+      lightGrey: '#FDFDFD'
     },
     extend: {
       height: {
-        nav: '60px'
+        nav: '60px',
+        cta: '80px'
       },
       maxHeight: {
         image: '400px',
