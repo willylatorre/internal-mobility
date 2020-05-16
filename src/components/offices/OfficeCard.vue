@@ -50,7 +50,7 @@ export default {
       >
         <i :class="`${office.weather.icon} el-icon ml-2 text-darkGrey`"></i>
         <span class="ml-2 text-xl font-medium text-darkGrey">
-          {{ office.weather.temperature }}º
+          {{ office.weather.temperature || '- ' }}º
         </span>
       </a>
     </div>

@@ -1,7 +1,7 @@
 export const mapWeather = (weather = {}) => {
   return {
     icon: mapWeatherIcon(weather.WeatherIcon, weather.IsDayTime),
-    temperature: weather.Temperature.Metric.Value,
+    temperature: weather.Temperature.Metric.Value || '-',
     link: weather.Link
   }
 }
