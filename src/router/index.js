@@ -14,6 +14,11 @@ const routes = [
     path: '/offices',
     name: 'offices',
     component: () => import('@/views/Offices') // Lazy loading ftw
+  },
+  {
+    path: '/success',
+    name: 'success',
+    component: () => import('@/views/Success') // Lazy loading ftw
   }
 ]
 

@@ -3,37 +3,53 @@ import { defineComponent, computed, ref } from '@vue/composition-api'
 import { useOffices } from '@/components/offices/useOffices'
 import OfficeCard from '@/components/offices/OfficeCard'
 import CTABar from '@/components/common/CTABar'
+import OfficeConfirmDialog from '@/components/offices/OfficeConfirmDialog'
 
 export default defineComponent({
   name: 'Home',
   setup(props, ctx) {
     const { otherOffices, destinationOffice } = useOffices()
 
-    const nextStep = () => {
-      // retrieveAdditionalData(date.value)
-      ctx.root.$router.push('casa')
+    const toggleModal = visible => {
+      confirmationDialogVisible.value = visible
+    }
+
+    const loading = ref(false)
+    const finish = () => {
+      toggleModal(false)
+      loading.value = true
+      // Here it would be cool to actually check server-side if the pick is available
+      // Let's simulate the call
+      setTimeout(() => {
+        loading.value = false
+        ctx.root.$router.push('success')
+      }, 1000)
     }
 
     const selectOffice = office => {
       destinationOffice.value = office
     }
 
-    const loading = ref(false)
     const disabled = computed(
       () => !(destinationOffice.value && destinationOffice.value.id)
     )
 
+    const confirmationDialogVisible = ref(false)
+
     return {
+      finish,
+      loading,
       selectOffice,
       destinationOffice,
       otherOffices,
-      loading,
       disabled,
-      nextStep
+      toggleModal,
+      confirmationDialogVisible
     }
   },
   components: {
     OfficeCard,
+    OfficeConfirmDialog,
     CTABar
   }
 })
@@ -57,7 +73,7 @@ export default defineComponent({
       >
       </office-card>
     </div>
-    <CTABar :loading="loading" :disabled="disabled" @next="nextStep">
+    <CTABar :loading="loading" :disabled="disabled" @next="toggleModal(true)">
       <template #left>
         Selected office:
         <span class="text-black font-medium">
@@ -70,5 +86,11 @@ export default defineComponent({
         <i class="el-icon-arrow-right el-icon-right ml-2"></i>
       </template>
     </CTABar>
+
+    <OfficeConfirmDialog
+      v-if="confirmationDialogVisible"
+      @confirm="finish"
+      @cancel="toggleModal(false)"
+    />
   </div>
 </template>

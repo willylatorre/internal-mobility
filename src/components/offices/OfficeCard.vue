@@ -56,7 +56,7 @@ export default {
     </div>
 
     <div
-      class="flex justify-around items-center text-darkGrey px-4"
+      class="flex justify-around items-center text-sm text-darkGrey px-4"
       style="grid-area:facilities"
     >
       <div alt="meeting rooms">
@@ -96,7 +96,6 @@ export default {
         class="text-grey hover:text-green"
         >Flight there in {{ office.flights.duration }} starting at
         {{ office.flights.price }}
-        <i class="el-icon el-icon-sell ml-2"></i>
       </a>
     </div>
   </div>

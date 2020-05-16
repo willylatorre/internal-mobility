@@ -42,5 +42,6 @@ nav {
 
 main {
   margin-top: $nav-height;
+  min-height: calc(100vh - #{$nav-height});
 }
 </style>

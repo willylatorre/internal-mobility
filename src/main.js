@@ -3,7 +3,15 @@ import App from './App.vue'
 import router from './router'
 import VueCompositionApi from '@vue/composition-api'
 import FullWidthWrapper from '@/components/common/FullWidthWrapper'
-import { Button, Select, Option, Input, DatePicker, Tag } from 'element-ui'
+import {
+  Button,
+  Select,
+  Option,
+  Input,
+  DatePicker,
+  Tag,
+  Dialog
+} from 'element-ui'
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
 
@@ -22,6 +30,7 @@ Vue.use(Input)
 Vue.use(DatePicker)
 Vue.use(Option)
 Vue.use(Tag)
+Vue.use(Dialog)
 Vue.component('fw-wrapper', FullWidthWrapper) // Wrapper component to keep things centered
 
 Vue.config.productionTip = false

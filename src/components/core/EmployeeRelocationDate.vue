@@ -12,7 +12,7 @@ export default defineComponent({
 
     const pickerOptions = {
       disabledDate(time) {
-        return time.getTime() < earliestDate
+        return time.getTime() <= earliestDate
       }
     }
 

@@ -20,7 +20,8 @@ module.exports = {
       },
       maxWidth: {
         input: '220px',
-        image: '400px'
+        image: '400px',
+        block: '600px'
       }
     }
   },
