@@ -49,10 +49,17 @@ export default defineComponent({
           class="mr-2"
           style="height:20px;width:20px;"
         />
-        <a :href="destinationOffice.flights.link" target="_new" rel="noopener"
-          >Flight there in {{ destinationOffice.flights.duration }} starting at
-          {{ destinationOffice.flights.price }}
-        </a>
+
+        <template v-if="destinationOffice.hasFlights()">
+          <a :href="destinationOffice.flights.link" target="_new" rel="noopener"
+            >Flight there in {{ destinationOffice.flights.duration }} starting
+            at
+            {{ destinationOffice.flights.price }}
+          </a>
+        </template>
+        <template v-else>
+          <span>No flights available </span>
+        </template>
       </div>
 
       <div class="flex items-center py-2 flex-wrap ">
@@ -63,7 +70,9 @@ export default defineComponent({
           class="hover:text-green"
         >
           <i
-            :class="`${destinationOffice.weather.icon} el-icon text-xl text-green `"
+            :class="
+              `${destinationOffice.weather.icon} el-icon text-xl text-green `
+            "
           ></i>
           <span class="ml-2 ">
             Current temperature is {{ destinationOffice.weather.temperature }}º

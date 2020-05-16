@@ -33,12 +33,12 @@ export default {
   >
     <div style="grid-area:image" :style="imageStyle"></div>
 
-    <div style="grid-area:city" class="text-2xl font-medium text-black pl-4">
-      {{ office.city }}
-    </div>
-
     <div style="grid-area:address" class="text-sm text-grey pl-4 pt-4">
       {{ office.address }}
+    </div>
+
+     <div style="grid-area:city" class="text-2xl font-medium text-black pl-4">
+      {{ office.city }}
     </div>
 
     <div style="grid-area:weather" class="p-4">
@@ -89,14 +89,19 @@ export default {
         class="mr-2"
         style="height:20px;width:20px;"
       />
-      <a
-        :href="office.flights.link"
-        target="_new"
-        rel="noopener"
-        class="text-grey hover:text-green"
-        >Flight there in {{ office.flights.duration }} starting at
-        {{ office.flights.price }}
-      </a>
+      <template v-if="office.hasFlights()">
+        <a
+          :href="office.flights.link"
+          target="_new"
+          rel="noopener"
+          class="text-grey hover:text-green"
+          >Flight there in {{ office.flights.duration }} starting at
+          {{ office.flights.price }}
+        </a>
+      </template>
+      <template v-else>
+        <span class="text-grey ">No flights available </span>
+      </template>
     </div>
   </div>
 </template>

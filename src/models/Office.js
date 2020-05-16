@@ -33,4 +33,8 @@ export default class Office {
   setFlightsInfo(flightsInfo) {
     this.flights = mapFlights(flightsInfo)
   }
+
+  hasFlights() {
+    return !!Object.keys(this.flights).length
+  }
 }
