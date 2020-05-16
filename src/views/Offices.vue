@@ -77,7 +77,7 @@ export default defineComponent({
       <template #left>
         Selected office:
         <span class="text-black font-medium">
-          {{ destinationOffice.city | '- ' }}
+          {{ destinationOffice.city || '- ' }}
         </span>
       </template>
 

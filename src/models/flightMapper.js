@@ -1,3 +1,5 @@
+const sanitizeUrl = require('@braintree/sanitize-url').sanitizeUrl
+
 export const mapFlights = (info = {}) => {
   return {
     duration: info.fly_duration || '-',
@@ -9,6 +11,6 @@ export const mapFlights = (info = {}) => {
           minimumFractionDigits: 0
         }).format(info.price)
       : '- €',
-    link: info.deep_link
+    link: sanitizeUrl(info.deep_link)
   }
 }

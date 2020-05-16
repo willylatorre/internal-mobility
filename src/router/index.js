@@ -28,4 +28,15 @@ const router = new VueRouter({
   routes
 })
 
+// Guard to prevent refresh in the middle of the process
+router.beforeEach((to, from, next) => {
+  if (!from.name && to.name !== 'home') {
+    // user is landing directly here
+    next({ name: 'home' })
+    return
+  }
+
+  next()
+})
+
 export default router
