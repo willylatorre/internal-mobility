@@ -56,7 +56,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div>
+  <div class="pb-8 mb-8">
     <h1 class="text-black font-medium text-xl lg:text-2xl">
       <span class="text-green font-medium"> Neyda</span>'s Offices
     </h1>
