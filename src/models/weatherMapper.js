@@ -2,14 +2,15 @@ const sanitizeUrl = require('@braintree/sanitize-url').sanitizeUrl
 
 export const mapWeather = (weather = {}) => {
   return {
-    icon: mapWeatherIcon(weather.WeatherIcon, weather.IsDayTime),
+    icon: _mapWeatherIcon(weather.WeatherIcon, weather.IsDayTime),
     temperature: weather.Temperature.Metric.Value || '-',
     link: sanitizeUrl(weather.Link)
   }
 }
 
+export const mapWeatherIcon = _mapWeatherIcon
 // https://developer.accuweather.com/weather-icons
-function mapWeatherIcon(weatherId, isDayTime) {
+function _mapWeatherIcon(weatherId, isDayTime = true) {
   switch (weatherId) {
     case 1:
     case 2:
