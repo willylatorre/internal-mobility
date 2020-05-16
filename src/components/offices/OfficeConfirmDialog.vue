@@ -23,22 +23,28 @@ export default defineComponent({
 
 <template>
   <el-dialog title="Confirm the details" visible width="30%">
-    <div class="grid grid-cols-2 gap-2">
-      <span> Employee </span>
-      <span class="text-right"> {{ employeeId || 123 }} </span>
+    <div>
+      <div class="flex justify-between">
+        <span> Employee </span>
+        <span> {{ employeeId || 123 }} </span>
+      </div>
 
-      <span> Current Office </span>
-      <span class="text-right">
-        {{ currentOffice ? currentOffice.city : 'London' }}
-      </span>
-
-      <span> Destination Office </span>
-      <span class="text-right">
-        {{ destinationOffice ? destinationOffice.city : 'Amsterdam' }}
-      </span>
-
-      <span> Relocation Date </span>
-      <span class="text-right"> {{ formattedDate }} </span>
+      <div class="flex justify-between">
+        <span> Current Office </span>
+        <span>
+          {{ currentOffice ? currentOffice.city : 'London' }}
+        </span>
+      </div>
+      <div class="flex justify-between">
+        <span> Destination Office </span>
+        <span>
+          {{ destinationOffice ? destinationOffice.city : 'Amsterdam' }}
+        </span>
+      </div>
+      <div class="flex justify-between">
+        <span> Relocation Date </span>
+        <span> {{ formattedDate }} </span>
+      </div>
     </div>
 
     <span slot="footer" class="dialog-footer">
