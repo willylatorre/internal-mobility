@@ -9,7 +9,6 @@ export default defineComponent({
     TitleHintStep
   },
   setup() {
-
     const { currentOffice, offices } = useOffices()
 
     const locationOptions = computed(() =>
@@ -38,6 +37,7 @@ export default defineComponent({
     </template>
 
     <el-select
+      data-test="employee-location"
       class="max-w-input"
       v-model="currentOffice"
       value-key="id"

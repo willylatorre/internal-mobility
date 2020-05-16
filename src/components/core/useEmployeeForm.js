@@ -20,8 +20,10 @@ export function provideEmployeeForm() {
   return provide(symb, instance)
 }
 
+export const createInstance = createFormInstance
+
 export function useEmployeeForm() {
   const form = inject(symb)
 
-  return form || provideEmployeeForm()
+  return form || createFormInstance()
 }

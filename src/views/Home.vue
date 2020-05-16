@@ -15,7 +15,7 @@ export default defineComponent({
     const { date, employeeId } = useEmployeeForm()
 
     const allFieldsFilled = computed(
-      () => currentOffice.value && date.value && employeeId.value
+      () => !!(currentOffice.value && date.value && employeeId.value)
     )
 
     const loading = ref(false)
@@ -29,6 +29,7 @@ export default defineComponent({
 
     return {
       loading,
+      currentOffice,
       allFieldsFilled,
       nextStep
     }

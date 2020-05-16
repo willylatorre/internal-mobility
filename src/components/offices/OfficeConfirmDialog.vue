@@ -22,7 +22,12 @@ export default defineComponent({
 </script>
 
 <template>
-  <el-dialog title="Confirm the details" visible width="30%">
+  <el-dialog
+    data-test="offices-dialog"
+    title="Confirm the details"
+    visible
+    width="30%"
+  >
     <div>
       <div class="flex justify-between">
         <span> Employee </span>

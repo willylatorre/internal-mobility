@@ -1,5 +1,5 @@
 import { mapWeather, mapWeatherIcon } from '../weatherMapper'
-import mockWeather from '@/api/__mock__/mockWeather'
+import mockWeather from '@/api/__mocks__/mockWeather'
 
 describe('Weather Mapper test', () => {
   describe('WeatherMap tests', () => {

@@ -22,6 +22,7 @@ export default {
     </div>
 
     <el-button
+      data-test="cta-button"
       type="primary"
       outline
       @click="$emit('next')"

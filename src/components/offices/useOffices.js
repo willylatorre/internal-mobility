@@ -62,8 +62,10 @@ export function provideOffices() {
   return provide(symb, instance)
 }
 
-export function useOffices() {
-  const form = inject(symb)
+export const createInstance = createOfficesInstance
 
-  return form || provideOffices()
+
+export function useOffices() {
+  let form = inject(symb)
+  return form || createOfficesInstance()
 }

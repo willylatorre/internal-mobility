@@ -29,6 +29,7 @@ export default defineComponent({
     </template>
 
     <el-input
+      data-test="employee-input"
       class="max-w-input"
       v-model.number="employeeId"
       placeholder="Your employee number"

@@ -1,5 +1,5 @@
 import { mapFlights } from '../flightMapper'
-import mockFlights from '@/api/__mock__/mockFlights'
+import mockFlights from '@/api/__mocks__/mockFlights'
 
 describe('Flight Mapper test', () => {
   let mappedFlight = {}

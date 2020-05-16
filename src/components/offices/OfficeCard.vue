@@ -27,6 +27,7 @@ export default {
 
 <template>
   <div
+    data-test="office-card"
     @click="$emit('select')"
     class=" shadow-md hover:shadow-lg border office-card rounded overflow-hidden"
     :class="{ 'border-borderGrey': !active, 'border-green': active }"
@@ -37,7 +38,7 @@ export default {
       {{ office.address }}
     </div>
 
-     <div style="grid-area:city" class="text-2xl font-medium text-black pl-4">
+    <div style="grid-area:city" class="text-2xl font-medium text-black pl-4">
       {{ office.city }}
     </div>
 
