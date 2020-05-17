@@ -11,8 +11,15 @@ export default class WeatherApi {
 
     await Promise.all(
       offices.map(async office => {
-        let weather = await this.retrieveWeather(office.code)
-        weatherInfo[office.id] = weather[0]
+        let weatherInfo = {}
+        try {
+          let weather = await this.retrieveWeather(office.code)
+          weatherInfo = weather[0]
+        } catch (e) {
+          console.error(e)
+        } finally {
+          weatherInfo[office.id] = weatherInfo
+        }
         return
       })
     )
