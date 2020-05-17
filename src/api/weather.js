@@ -8,6 +8,7 @@ export default class WeatherApi {
 
   async retrieveOfficesWeatherInfo(offices) {
     let weatherInfo = {}
+
     await Promise.all(
       offices.map(async office => {
         let weather = await this.retrieveWeather(office.code)
@@ -21,6 +22,7 @@ export default class WeatherApi {
   retrieveWeather(location) {
     const url = `${this.baseURL}/currentconditions/v1/${location}`
     const params = { apikey: this.apiKey }
+
     return externalCall({ url, params })
   }
 }

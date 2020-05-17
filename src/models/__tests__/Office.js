@@ -1,7 +1,7 @@
 import Office from '../Office'
 import mockOffices from '@/api/__mocks__/mockOffices'
-import * as FlightMapper from '../flightMapper'
-import * as WeatherMapper from '../weatherMapper'
+import * as FlightMapper from '@/mappers/flightMapper'
+import * as WeatherMapper from '@/mappers/weatherMapper'
 
 const originalMapFlights = FlightMapper.mapFlights
 const originalMapWeather = WeatherMapper.mapWeather

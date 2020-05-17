@@ -2,6 +2,7 @@
 import { defineComponent } from '@vue/composition-api'
 import { useEmployeeForm } from '@/components/core/useEmployeeForm'
 import TitleHintStep from '@/components/common/TitleHintStep'
+
 export default defineComponent({
   name: 'EmployeeNumberInput',
   components: {
@@ -31,6 +32,7 @@ export default defineComponent({
     <el-input
       data-test="employee-input"
       class="max-w-input"
+      type="number"
       v-model.number="employeeId"
       placeholder="Your employee number"
     />

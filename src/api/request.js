@@ -3,7 +3,7 @@ import axios from 'axios'
 class Request {
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.NEYDA_API_URL, // Should be something like https://api.neyda.com
+      baseURL: process.env.VUE_APP_NEYDA_API_URL, // Should be something like https://api.neyda.com
       timeout: 10000
     })
   }

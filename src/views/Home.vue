@@ -1,12 +1,12 @@
 <script>
 import { defineComponent, computed, ref } from '@vue/composition-api'
+import { useEmployeeForm } from '@/components/core/useEmployeeForm'
+import { useOffices } from '@/components/offices/useOffices'
+
 import EmployeeNumberInput from '@/components/core/EmployeeNumberInput'
 import EmployeeRelocationDate from '@/components/core/EmployeeRelocationDate'
 import EmployeeCurrentLocationSelect from '@/components/core/EmployeeCurrentLocationSelect'
 import CTABar from '@/components/common/CTABar'
-
-import { useEmployeeForm } from '@/components/core/useEmployeeForm'
-import { useOffices } from '@/components/offices/useOffices'
 
 export default defineComponent({
   name: 'Home',
@@ -14,11 +14,12 @@ export default defineComponent({
     const { retrieveAdditionalData, currentOffice } = useOffices()
     const { date, employeeId } = useEmployeeForm()
 
+
+    const loading = ref(false)
+
     const allFieldsFilled = computed(
       () => !!(currentOffice.value && date.value && employeeId.value)
     )
-
-    const loading = ref(false)
 
     const nextStep = async () => {
       loading.value = true

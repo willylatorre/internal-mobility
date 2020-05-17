@@ -28,9 +28,9 @@ export default {
 <template>
   <div
     data-test="office-card"
-    @click="$emit('select')"
     class=" shadow-md hover:shadow-lg border office-card rounded overflow-hidden"
     :class="{ 'border-borderGrey': !active, 'border-green': active }"
+    @click="$emit('select')"
   >
     <div style="grid-area:image" :style="imageStyle"></div>
 
@@ -90,6 +90,7 @@ export default {
         class="mr-2"
         style="height:20px;width:20px;"
       />
+
       <template v-if="office.hasFlights()">
         <a
           :href="office.flights.link"

@@ -58,7 +58,7 @@ export default defineComponent({
 <template>
   <div class="pb-8 mb-8">
     <h1 class="text-black font-medium text-xl lg:text-2xl">
-      <span class="text-green font-medium"> Neyda</span>'s Offices
+      <span class="highlight"> Neyda</span>'s Offices
     </h1>
     <p class="text-darkGrey">
       Please select the desired destination for your relocation
@@ -73,6 +73,7 @@ export default defineComponent({
       >
       </office-card>
     </div>
+
     <CTABar :loading="loading" :disabled="disabled" @next="toggleModal(true)">
       <template #left>
         Selected office:

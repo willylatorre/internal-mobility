@@ -13,11 +13,27 @@ const routes = [
   {
     path: '/offices',
     name: 'offices',
+    // Guard to prevent undesired navigation
+    beforeEnter: (to, from, next) => {
+      if (from.name !== 'home') {
+        next({ name: 'home' })
+        return
+      }
+      next()
+    },
     component: () => import('@/views/Offices') // Lazy loading ftw
   },
   {
     path: '/success',
     name: 'success',
+    // Guard to prevent undesired navigation
+    beforeEnter: (to, from, next) => {
+      if (from.name !== 'offices') {
+        next({ name: 'home' })
+        return
+      }
+      next()
+    },
     component: () => import('@/views/Success') // Lazy loading ftw
   }
 ]
@@ -26,17 +42,6 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
-
-// Guard to prevent refresh in the middle of the process
-router.beforeEach((to, from, next) => {
-  if (!from.name && to.name !== 'home') {
-    // user is landing directly here
-    next({ name: 'home' })
-    return
-  }
-
-  next()
 })
 
 export default router

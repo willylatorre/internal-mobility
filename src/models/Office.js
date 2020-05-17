@@ -1,5 +1,5 @@
-import { mapWeather } from './weatherMapper'
-import { mapFlights } from './flightMapper'
+import { mapWeather } from '@/mappers/weatherMapper'
+import { mapFlights } from '@/mappers/flightMapper'
 
 export default class Office {
   constructor({

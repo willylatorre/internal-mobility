@@ -2,6 +2,7 @@
 import { defineComponent } from '@vue/composition-api'
 import { useEmployeeForm } from '@/components/core/useEmployeeForm'
 import TitleHintStep from '@/components/common/TitleHintStep'
+
 export default defineComponent({
   name: 'EmployeeRelocationDate',
   components: {

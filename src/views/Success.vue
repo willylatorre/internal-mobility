@@ -27,9 +27,9 @@ export default defineComponent({
     </h1>
     <p class=" max-w-block my-2">
       Thank you very much for your request. Here at
-      <span class="text-green font-medium"> neyda </span> we encourage traveling
-      to our other offices. We do believe that it's the best way to gasp our
-      culture and learn from the other teams.
+      <span class="highlight"> neyda </span> we encourage traveling to our other
+      offices. We do believe that it's the best way to gasp our culture and
+      learn from the other teams.
     </p>
     <p class=" max-w-block my-2">
       Your request hass been proccessed and you will be contacted in the

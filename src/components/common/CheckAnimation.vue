@@ -36,7 +36,7 @@
 <style lang="scss" scoped>
 $circle-length: 151px;
 $check-length: 36px;
-$green: #0ABF53;
+$green: #0abf53;
 
 @keyframes scaleAnimation {
   0% {
