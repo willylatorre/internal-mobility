@@ -35,7 +35,7 @@ Additionally, some **route-guards** have been added to prevent start the process
 
 This small app has integration with
 
-- [AccuweatherAPI](https://developer.accuweather.com/apis): To integrate the API you need to rename `.env.template` to `.env`and provide your API token.
+- [OpenWeatherApi](https://openweathermap.org/): To integrate the API you need to rename `.env.template` to `.env`and provide your API token.
 - [KiwiAPI](https://docs.kiwi.com/): to retrieve flights info
 - [Element UI](https://github.com/ElemeFE/element): A vue.js UI toolkit to avoid spending hours creating my custom components
 - [Date-fns](https://date-fns.org/): To manipulate dates in the lightest way possible

@@ -2,34 +2,41 @@ import { externalCall } from './request'
 
 export default class WeatherApi {
   constructor() {
-    this.baseURL = 'https://dataservice.accuweather.com'
-    this.apiKey = process.env.VUE_APP_ACCUWEATHER_API_KEY
+    this.baseURL = 'https://api.openweathermap.org/data/2.5'
+    this.apiKey = process.env.VUE_APP_OPENWEATHER_KEY
   }
 
   async retrieveOfficesWeatherInfo(offices) {
+    let url = `${this.baseURL}/group`
+
+    let params = {
+      id: offices.map(o => o.code).join(','),
+      units: 'metric',
+      appid: this.apiKey
+    }
+
     let weatherInfo = {}
+    try {
+      let { list } = await externalCall({ url, params })
 
-    await Promise.all(
-      offices.map(async office => {
-        let weatherInfo = {}
-        try {
-          let weather = await this.retrieveWeather(office.code)
-          weatherInfo = weather[0]
-        } catch (e) {
-          console.error(e)
-        } finally {
-          weatherInfo[office.id] = weatherInfo
-        }
-        return
-      })
-    )
+      let resultsMap = list.reduce((_map, _item) => {
+        _map[_item.id] = _item
+        return _map
+      }, {})
+
+      weatherInfo = offices.reduce((info, office) => {
+        info[office.id] = resultsMap[office.code]
+        return info
+      }, {})
+
+      // list.forEach(result => {
+      //   let _office = offices.find(o => o.code === result.id)
+      //   weatherInfo[_office.id] = result
+      // })
+    } catch (err) {
+      console.error(err)
+    }
+
     return weatherInfo
-  }
-
-  retrieveWeather(location) {
-    const url = `${this.baseURL}/currentconditions/v1/${location}`
-    const params = { apikey: this.apiKey }
-
-    return externalCall({ url, params })
   }
 }
