@@ -2,7 +2,7 @@ import { externalCall } from './request'
 
 export default class WeatherApi {
   constructor() {
-    this.baseURL = 'http://dataservice.accuweather.com'
+    this.baseURL = 'https://dataservice.accuweather.com'
     this.apiKey = process.env.VUE_APP_ACCUWEATHER_API_KEY
   }
 
