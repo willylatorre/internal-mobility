@@ -1,5 +1,10 @@
 module.exports = {
-  purge: ['./src/**/*.html', './src/**/*.vue', './src/**/*.js'],
+  purge: {
+    options: {
+      whitelistPatterns: [/el-/]
+    },
+    content: ['./src/**/*.html', './src/**/*.vue', './src/**/*.js']
+  },
   theme: {
     colors: {
       green: '#0ABF53',
