@@ -11,8 +11,11 @@ export default defineComponent({
 
     const formattedDate = computed(() => format(date.value, 'dd/MM/yyyy'))
 
+    const dialogWidth = window.innerWidth > 1024 ? '30%' : '80%';
+
     return {
       currentOffice,
+      dialogWidth,
       destinationOffice,
       employeeId,
       formattedDate
@@ -26,7 +29,8 @@ export default defineComponent({
     data-test="offices-dialog"
     title="Confirm the details"
     visible
-    width="30%"
+    :width="dialogWidth"
+    class="max-w-block"
   >
     <div>
       <div class="flex justify-between">

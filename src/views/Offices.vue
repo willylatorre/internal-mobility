@@ -91,7 +91,7 @@ export default defineComponent({
     <OfficeConfirmDialog
       v-if="confirmationDialogVisible"
       @confirm="finish"
-      @cancel="toggleModal(false)"
+      @close="toggleModal(false)"
     />
   </div>
 </template>

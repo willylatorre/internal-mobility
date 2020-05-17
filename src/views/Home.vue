@@ -45,7 +45,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="home grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+  <div class="home grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8 pb-8">
     <div class="flex justify-center items-start p-4">
       <img
         class="rounded max-w-image max-h-imageSmall lg:max-h-image"
