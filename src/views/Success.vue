@@ -63,21 +63,15 @@ export default defineComponent({
       </div>
 
       <div class="flex items-center py-2 flex-wrap ">
-        <a
-          :href="destinationOffice.weather.link"
-          target="_new"
-          rel="noopener"
-          class="hover:text-green"
-        >
-          <i
-            :class="
-              `${destinationOffice.weather.icon} el-icon text-xl text-green `
-            "
-          ></i>
-          <span class="ml-2 ">
-            Current temperature is {{ destinationOffice.weather.temperature }}º
-          </span>
-        </a>
+        <img
+          :src="destinationOffice.weather.icon"
+          width="20"
+          height="20"
+          :alt="destinationOffice.weather.iconDescription"
+        />
+        <span class="ml-2 ">
+          Current temperature is {{ destinationOffice.weather.temperature }}º
+        </span>
       </div>
     </div>
   </div>

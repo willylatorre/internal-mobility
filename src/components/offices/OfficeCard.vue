@@ -49,7 +49,12 @@ export default {
         rel="noopener"
         class="flex items-center"
       >
-        <img :src="office.weather.icon" width="20" height="20" />
+        <img
+          :src="office.weather.icon"
+          width="20"
+          height="20"
+          :alt="office.weather.iconDescription"
+        />
         <span class="ml-2 text-xl font-medium text-darkGrey">
           {{ office.weather.temperature || '- ' }}º
         </span>
