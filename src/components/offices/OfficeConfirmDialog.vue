@@ -1,5 +1,5 @@
 <script>
-import { defineComponent, computed } from '@vue/composition-api'
+import { defineComponent, computed, ref, onMounted } from '@vue/composition-api'
 import { useOffices } from '@/components/offices/useOffices'
 import { useEmployeeForm } from '@/components/core/useEmployeeForm'
 import format from 'date-fns/format'
@@ -11,7 +11,11 @@ export default defineComponent({
 
     const formattedDate = computed(() => format(date.value, 'dd/MM/yyyy'))
 
-    const dialogWidth = window.innerWidth > 1024 ? '30%' : '80%';
+    const dialogWidth = ref('50%')
+
+    onMounted(() => {
+      dialogWidth.value = window.innerWidth > 1024 ? '30%' : '80%'
+    })
 
     return {
       currentOffice,
@@ -30,7 +34,6 @@ export default defineComponent({
     title="Confirm the details"
     visible
     :width="dialogWidth"
-    class="max-w-block"
   >
     <div>
       <div class="flex justify-between">
