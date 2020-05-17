@@ -17,8 +17,8 @@ import locale from 'element-ui/lib/locale'
 
 // Styles
 import './assets/scss/element.scss'
-import './assets/scss/tailwind.css'
 import './assets/scss/app.scss'
+import './assets/scss/tailwind.css'
 
 Vue.use(VueCompositionApi)
 
